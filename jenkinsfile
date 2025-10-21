@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'RADIUS', defaultValue: '5', description: 'Radius of the circle')
+    }
+
+    stages {
+        stage('Make executable') {
+            steps {
+                sh('chmod +x ./circle_area.sh')
+            }
+      }
+
+        stage('Calculate Circle Area') {
+            steps {
+                script {
+                    echo "Calculating area for radius: ${params.RADIUS}"
+                }
+                sh "./circle_area.sh ${params.RADIUS}"
+            }
+        }
+    }
+}
