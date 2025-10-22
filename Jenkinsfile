@@ -2,7 +2,9 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'MY_PARAM', defaultValue: 'HelloFromJenkins', description: 'Parameter to pass to script')
+        choice(name: 'NUMBER',
+            choices: [10,20,30,40,50,60,70,80,90],
+            description: 'Select the value for F(n) for the Fibonnai sequence.')
     }
 
     stages {
