@@ -6,6 +6,12 @@ pipeline {
     }
 
     stages {
+        stage('Make executable') {
+            steps {
+                sh('chmod +x ./circle_area.sh')
+            }
+        }
+
         stage('Run Script with Param') {
             steps {
                 script {
