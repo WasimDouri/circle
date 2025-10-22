@@ -2,22 +2,16 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'RADIUS', defaultValue: '5', description: 'Radius of the circle')
+        string(name: 'MY_PARAM', defaultValue: 'HelloFromJenkins', description: 'Parameter to pass to script')
     }
 
     stages {
-        stage('Make executable') {
-            steps {
-                sh('chmod +x ./circle_area.sh')
-            }
-      }
-
-        stage('Calculate Circle Area') {
+        stage('Run Script with Param') {
             steps {
                 script {
-                    echo "Calculating area for radius: ${params.RADIUS}"
+                    // Call the shell script and pass the parameter
+                    sh "./circle_area.sh ${params.MY_PARAM}"
                 }
-                sh "./circle_area.sh ${params.RADIUS}"
             }
         }
     }
