@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     // Call the shell script and pass the parameter
-                    sh "./circle_area.sh ${params.MY_PARAM}"
+                    sh "./circle_area.sh ${params.NUMBER}"
                 }
             }
         }
